@@ -11,6 +11,8 @@ RUN pip3 install --upgrade pip
 ADD requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
+RUN pip install --upgrade git+https://github.com/huggingface/diffusers.git transformers accelerate scipy
+
 # We add the banana boilerplate here
 ADD server.py .
 EXPOSE 8000
