@@ -5,6 +5,9 @@ import base64
 from io import BytesIO
 import os
 
+#Disable NSFW
+def dummy(images, **kwargs):
+    return images, False
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"
 def init():
@@ -15,6 +18,8 @@ def init():
 
     model = DiffusionPipeline.from_pretrained(repo_id, use_auth_token=HF_AUTH_TOKEN).to("cuda")
 
+    pipe.safety_checker = dummy
+    
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.
 def inference(model_inputs:dict) -> dict:
