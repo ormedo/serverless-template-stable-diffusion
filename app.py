@@ -18,7 +18,7 @@ def init():
 
     model = DiffusionPipeline.from_pretrained(repo_id, use_auth_token=HF_AUTH_TOKEN).to("cuda")
 
-    pipe.safety_checker = dummy
+    model.safety_checker = dummy
     
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.
