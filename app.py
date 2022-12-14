@@ -12,11 +12,11 @@ def dummy(images, **kwargs):
 # Load your model to GPU as a global variable here using the variable name "model"
 def init():
     global model
-    HF_AUTH_TOKEN = os.getenv("HF_AUTH_TOKEN")
-    
-    repo_id = "prompthero/openjourney"
 
-    model = DiffusionPipeline.from_pretrained(repo_id, use_auth_token=HF_AUTH_TOKEN).to("cuda")
+    
+    repo_id = "./openjourney"
+
+    model = DiffusionPipeline.from_pretrained(repo_id).to("cuda")
 
     model.safety_checker = dummy
     

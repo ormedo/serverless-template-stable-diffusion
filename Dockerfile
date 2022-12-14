@@ -13,6 +13,9 @@ RUN pip3 install -r requirements.txt
 
 RUN pip install --upgrade git+https://github.com/huggingface/diffusers.git transformers accelerate scipy
 
+
+RUN mkdir -p /.cache/huggingface 
+ADD openjourney /openjourney
 # We add the banana boilerplate here
 ADD server.py .
 EXPOSE 8000
@@ -20,10 +23,6 @@ EXPOSE 8000
 # Add your huggingface auth key here
 ENV HF_AUTH_TOKEN="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"
 
-# Add your model weight files 
-# (in this case we have a python script)
-ADD download.py .
-RUN python3 download.py
 
 # Add your custom app code, init() and inference()
 ADD app.py .
