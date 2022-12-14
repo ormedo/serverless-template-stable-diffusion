@@ -14,7 +14,6 @@ RUN pip3 install -r requirements.txt
 RUN pip install --upgrade git+https://github.com/huggingface/diffusers.git transformers accelerate scipy
 
 
-RUN mkdir -p /.cache/huggingface 
 ADD openjourney /openjourney
 # We add the banana boilerplate here
 ADD server.py .
