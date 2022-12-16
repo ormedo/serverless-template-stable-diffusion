@@ -14,7 +14,7 @@ def init():
     global model
 
     
-    repo_id = "./prompthero"
+    repo_id = "./openjourney"
 
     model = DiffusionPipeline.from_pretrained(repo_id).to("cuda")
 

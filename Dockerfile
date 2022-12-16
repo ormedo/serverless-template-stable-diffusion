@@ -4,7 +4,8 @@ FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime
 WORKDIR /
 
 # Install git
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git  \
+        git-lfs
 
 # Install python packages
 RUN pip3 install --upgrade pip
@@ -13,8 +14,10 @@ RUN pip3 install -r requirements.txt
 
 RUN pip install --upgrade git+https://github.com/huggingface/diffusers.git transformers accelerate scipy
 
-
-ADD prompthero /prompthero
+RUN mkdir openjourney
+RUN cd /openjourney
+RUN git lfs clone https://huggingface.co/prompthero/openjourney
+RUN cd ..
 # We add the banana boilerplate here
 ADD server.py .
 EXPOSE 8000
