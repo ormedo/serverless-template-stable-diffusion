@@ -14,11 +14,15 @@ RUN pip3 install -r requirements.txt
 
 RUN pip install --upgrade git+https://github.com/huggingface/diffusers.git transformers accelerate scipy
 
-RUN mkdir openjourney
-RUN cd /openjourney
-RUN git lfs clone https://huggingface.co/prompthero/openjourney
-RUN cd ..
+ADD download.py .
+RUN python3 download.py
+
+#RUN mkdir openjourney
+#RUN cd /openjourney
+#RUN git lfs clone https://huggingface.co/prompthero/openjourney
+##RUN cd ..
 # We add the banana boilerplate here
+
 ADD server.py .
 EXPOSE 8000
 
