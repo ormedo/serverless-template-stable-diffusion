@@ -31,6 +31,8 @@ ENV HF_AUTH_TOKEN="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"
 
 
 # Add your custom app code, init() and inference()
+ADD upload.py .
+ADD ai-studio-credential.json .
 ADD app.py .
 
 CMD python3 -u server.py
