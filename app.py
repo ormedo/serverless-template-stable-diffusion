@@ -43,8 +43,7 @@ def upload_image(image, prompt, modifiers):
 def init():
     global model
 
-    
-    repo_id = "dreamlike-art/dreamlike-photoreal-2.0"
+    repo_id = "./model/dreamlike-photoreal-2.0"
 
     model = DiffusionPipeline.from_pretrained(repo_id,  safety_checker = None).to("cuda")
     

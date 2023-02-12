@@ -11,7 +11,7 @@ def download_model():
     #Set auth token which is required to download stable diffusion model weights
     HF_AUTH_TOKEN = os.getenv("HF_AUTH_TOKEN")
 
-    repo_id = "dreamlike-art/dreamlike-photoreal-2.0"
+    repo_id = "./model/dreamlike-photoreal-2.0"
 
     model = DiffusionPipeline.from_pretrained(repo_id, use_auth_token=HF_AUTH_TOKEN,  safety_checker = None)
 
