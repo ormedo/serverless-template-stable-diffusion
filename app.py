@@ -7,6 +7,7 @@ from firebase_admin import credentials
 import firebase_admin
 import uuid
 from io import BytesIO
+import torch
 
 cred = credentials.Certificate('/ai-studio-credential.json')
 app = firebase_admin.initialize_app(cred, {
@@ -43,9 +44,9 @@ def upload_image(image, prompt, modifiers):
 def init():
     global model
 
-    repo_id = "./model/dreamlike-photoreal-2.0"
+    repo_id = "./dreamlike-photoreal-2.0"
 
-    model = DiffusionPipeline.from_pretrained(repo_id,  safety_checker = None).to("cuda")
+    model = DiffusionPipeline.from_pretrained(repo_id,torch_dtype=torch.float16,  safety_checker = None).to("cuda")
     
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.

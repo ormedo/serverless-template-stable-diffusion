@@ -14,7 +14,7 @@ RUN pip3 install -r requirements.txt
 
 RUN pip install --upgrade git+https://github.com/huggingface/diffusers.git transformers accelerate scipy
 
-COPY ./model /model
+RUN git lfs clone https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0
 ADD download.py .
 RUN python3 download.py
 
